@@ -1,0 +1,21 @@
+# One-click deploy config for Render (https://render.com).
+# Push this repo to GitHub, then "New + > Blueprint" and point it here.
+services:
+  - type: web
+    name: live-interpreter
+    runtime: docker
+    plan: starter            # 0.5 CPU / 512 MB is enough for one session + fan-out via LiveKit
+    healthCheckPath: /api/config
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false          # set in the Render dashboard (secret)
+      - key: LIVEKIT_URL
+        sync: false
+      - key: LIVEKIT_API_KEY
+        sync: false
+      - key: LIVEKIT_API_SECRET
+        sync: false
+      - key: PUBLIC_BASE_URL
+        sync: false          # set to your https://<service>.onrender.com after first deploy
+      - key: PORT
+        value: 8080

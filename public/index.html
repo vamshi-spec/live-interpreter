@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Live Interpreter — Speaker Console</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <h1>🎙️ Live Interpreter — Speaker Console</h1>
+    <p class="sub">Speak in Telugu, English, Hindi or Tamil. Students hear you interpreted into their language in near real-time.</p>
+
+    <div class="panel" id="startPanel">
+      <div class="row">
+        <button id="startBtn" class="btn-success btn-block">Start Broadcast</button>
+      </div>
+      <label class="notice" style="display:block; margin-top:12px;">
+        <input type="checkbox" id="directMode" />
+        Use direct Live Translate instead of the interpreter cascade (A/B test — literal, not meaning-based)
+      </label>
+      <div id="startError" class="notice error"></div>
+    </div>
+
+    <div class="panel" id="livePanel" style="display:none;">
+      <div class="row" style="margin-bottom:14px;">
+        <span class="pill"><span class="dot live" id="liveDot"></span> <span id="liveLabel">LIVE</span></span>
+        <span class="pill" id="modePill">cascade</span>
+        <span class="pill" id="uptimePill">0:00</span>
+        <span class="spacer"></span>
+        <button id="stopBtn" class="btn-danger">Stop</button>
+      </div>
+
+      <h2>Share with students</h2>
+      <div class="share">
+        <img id="qr" alt="QR code to join" />
+        <div style="flex:1;">
+          <div class="linkbox" id="shareLink"></div>
+          <div class="row" style="margin-top:10px;">
+            <button id="copyBtn" class="btn-ghost">Copy link</button>
+            <span class="notice" id="copyMsg"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" id="statsPanel" style="display:none;">
+      <h2>Who's listening — <span id="totalListeners">0</span> total</h2>
+      <div class="counts" id="counts"></div>
+    </div>
+
+    <div class="panel" id="transcriptPanel" style="display:none;">
+      <h2>Your live transcript</h2>
+      <div class="transcript" id="transcript"><span class="partial">Waiting for you to speak…</span></div>
+    </div>
+  </div>
+
+  <script type="module" src="/speaker.js"></script>
+</body>
+</html>

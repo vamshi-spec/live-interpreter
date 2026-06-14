@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Live Interpreter — Listen</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="wrap narrow">
+    <h1>🎧 Live session</h1>
+    <p class="sub" id="sub">Pick the language you want to hear.</p>
+
+    <div class="panel" id="pickPanel">
+      <div class="lang-grid" id="langGrid"></div>
+      <button id="listenBtn" class="btn-success btn-block" style="margin-top:16px;" disabled>Tap to Listen</button>
+      <div class="notice error" id="pickError"></div>
+    </div>
+
+    <div class="panel" id="playPanel" style="display:none;">
+      <div class="row">
+        <span class="pill"><span class="dot live"></span> Listening · <span id="nowLang"></span></span>
+        <span class="spacer"></span>
+        <button id="changeBtn" class="btn-ghost">Change language</button>
+      </div>
+
+      <div class="listening-bar">
+        <span class="eq"><span></span><span></span><span></span><span></span></span>
+        <span class="notice" id="playState">Connecting…</span>
+      </div>
+
+      <div class="caption empty" id="caption">Live captions will appear here as the speaker talks.</div>
+
+      <div class="row" style="margin-top:14px;">
+        <button id="unmuteBtn" class="btn-primary" style="display:none;">🔊 Tap to enable sound</button>
+      </div>
+      <p class="notice">Low on data or signal? You can read the captions above even if audio is choppy.</p>
+    </div>
+
+    <audio id="audio" autoplay playsinline></audio>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/livekit-client@2.7.0/dist/livekit-client.umd.min.js"></script>
+  <script type="module" src="/listen.js"></script>
+</body>
+</html>

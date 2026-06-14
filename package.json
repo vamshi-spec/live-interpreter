@@ -1,0 +1,24 @@
+{
+  "name": "live-interpreter",
+  "version": "1.0.0",
+  "description": "Live multilingual speech-broadcast app — interpret, don't translate. Cascaded Gemini pipeline (STT -> interpret -> TTS) fanned out per-language over LiveKit.",
+  "type": "module",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "check": "for f in $(find server public -name '*.js'); do node --check \"$f\" || exit 1; done && echo 'all js ok'"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@google/genai": "^1.9.0",
+    "@livekit/rtc-node": "^0.13.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "livekit-server-sdk": "^2.9.0",
+    "qrcode": "^1.5.4",
+    "ws": "^8.18.0"
+  }
+}
